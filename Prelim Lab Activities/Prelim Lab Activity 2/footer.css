@@ -1,0 +1,67 @@
+.cv-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 45px 65px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffffff;
+  color: #222;
+  border: 3px solid #4a6cf7;
+  border-radius: 20px;
+  box-shadow:
+    0 5px 18px rgba(74, 108, 247, 0.25),
+    0 0 0 4px rgba(74, 108, 247, 0.1);
+}
+
+.section-title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  color: #0d0d0d;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #0a58aa;
+  text-transform: uppercase;
+}
+
+.tech-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.tech-category {
+    border-left: 5px solid #0a58aa;
+  background: #f4f8ff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  transition: 0.25s ease;
+}
+
+.tech-category:hover {
+  background: #eef2f7;
+  border-left-color: #084d96;
+}
+
+.category-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 6px;
+}
+
+.tech-items {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .cv-container { padding: 30px 25px; }
+  .section-title { font-size: 1.3rem; }
+}
+
+@media (max-width: 480px) {
+  .cv-container { padding: 20px 15px; }
+  .section-title { font-size: 1.15rem; }
+  .tech-items { font-size: 0.95rem; }
+}

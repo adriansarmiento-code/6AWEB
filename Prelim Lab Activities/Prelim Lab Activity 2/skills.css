@@ -1,0 +1,117 @@
+.cv-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 45px 65px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffffff;
+  color: #222;
+
+  border: 3px solid #0a58aa;        /* Primary border color (blue) */
+  border-radius: 18px;              /* More modern rounded edges */
+  background: #ffffff;              /* Clean white foreground */
+  box-shadow:
+    0 0 0 4px #c2dbff,              /* Soft blue outline */
+    0 6px 18px rgba(0, 0, 0, 0.12); /* Stronger depth shadow */
+}
+
+.cv-content {
+  margin-top: 20px;
+}
+
+.section-title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  color: #0d0d0d;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #0a58aa;
+  text-transform: uppercase;
+}
+
+.profile-text {
+  font-size: 1.08rem;
+  color: #444;
+  text-align: justify;
+  padding: 18px 22px;
+  border-radius: 10px;
+  line-height: 1.9;
+    border-left: 5px solid #0a58aa;
+  background: #f1f6ff;
+}
+
+.profile-section,
+.skills-section {
+  margin-bottom: 45px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+}
+
+.skills-list {
+    border-left: 5px solid #0a58aa;
+  background: #f5f8ff;
+  list-style: none;
+  background: #f5f7fa;
+  padding: 20px 25px;
+  border-radius: 12px;
+  border-left: 4px solid #0a58aa;
+  transition: 0.25s ease;
+}
+
+.skills-list:hover {
+  background: #eef2f7;
+  border-left-color: #084d96;
+}
+
+.skills-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 14px;
+  font-size: 1.03rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.skills-list li::before {
+  content: "▸";
+  position: absolute;
+  left: 5px;
+  top: 0;
+  color: #0a58aa;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .cv-container {
+    padding: 30px 25px;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cv-container {
+    padding: 20px 15px;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+
+  .profile-text,
+  .skills-list li {
+    font-size: 0.95rem;
+  }
+}
