@@ -1,0 +1,76 @@
+<div class="container">
+  <h1 class="main-title">Angular Pipes Demo</h1>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Date Pipe</h3>
+      <p>Current time: {{ presentDate | date }}</p>
+      <p>Short date: {{presentDate | date:'shortDate' }}</p>
+      <p>Full date: {{presentDate | date:'fullDate' }}</p>
+      <p>Custom format: {{presentDate | date:'M/dd/yyyy'}}</p>
+      <p>Time: {{presentDate | date:'h:mm'}}</p>
+    </div>
+
+    <div class="card">
+    <h3>Case Pipes</h3>
+    <p>UPPERCASE: {{titleText | uppercase}}</p>
+    <p>lowercase: {{titleText | lowercase}}</p>
+    <p>Title Case: {{ titleText | titlecase }}</p>
+    </div>
+  </div>
+
+  <div class="card highlight">
+    <h3>Live Time (Async Pipe)</h3>
+    <p class="time-display">{{ time$ | async | date:'mediumTime' }}</p>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>Currency Pipe</h3>
+      <p>Default: {{ price | currency:'':true}}</p>
+      <p>INR: {{ price | currency:'INR' }}</p>
+      <p>PHP: {{ price | currency: 'Php ' }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Decimal Pipe</h3>
+      <p>{{decimalNum1 | number}}</p>
+      <p>{{decimalNum2 | number}}</p>
+    </div>
+
+    <div class="card">
+      <h3>Percent Pipe</h3>
+      <p>Default: {{ percentValue | percent }}</p>
+      <p>2 decimals: {{ percentValue | percent:'1.2-2' }}</p>
+      <p>0.25: {{ 0.25 | percent }}</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Slice Pipe</h3>
+      <div class="slice-examples">
+        <p><strong>Start index (2):</strong> {{Fruits | slice:2}}</p>
+        <p><strong>Range (1:4):</strong> {{Fruits | slice:1:4}}</p>
+        <p><strong>Negative (-2):</strong> {{Fruits | slice:-2}}</p>
+        <p><strong>Negative range (-4:-2):</strong> {{Fruits | slice:-4:-2}}</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>KeyValue Pipe</h3>
+      <ul class="key-value-list">
+        @for (item of userObject | keyvalue; track item.key) {
+          <li>
+            <span class="key">{{ item.key | titlecase }}</span>
+            <span class="value">{{ item.value }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Created by Adrian Sarmiento</p>
+  </footer>
+</div>

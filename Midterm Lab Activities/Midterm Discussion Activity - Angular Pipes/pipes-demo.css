@@ -1,0 +1,211 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main-title {
+  text-align: center;
+  font-size: 3em;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 50px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.card h3 {
+  color: #2d3748;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid #667eea;
+}
+
+.card p {
+  margin: 10px 0;
+  padding: 10px 15px;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #4a5568;
+  background: #f7fafc;
+  border-radius: 8px;
+  border-left: 3px solid #667eea;
+  transition: all 0.2s ease;
+}
+
+.card p:hover {
+  background: #edf2f7;
+  border-left-width: 5px;
+}
+
+.card.highlight {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.card.highlight h3 {
+  color: white;
+  border-bottom-color: white;
+}
+
+.time-display {
+  font-size: 2.5em !important;
+  font-weight: 700;
+  color: white !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  padding: 25px !important;
+  border-radius: 12px;
+  border: 2px solid white !important;
+  letter-spacing: 2px;
+}
+
+.slice-examples p {
+  background: #f0f4ff;
+  border-left-color: #4299e1;
+}
+
+.slice-examples strong {
+  color: #2c5282;
+  font-weight: 600;
+}
+.key-value-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.key-value-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin: 10px 0;
+  background: linear-gradient(to right, #f7fafc, #edf2f7);
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+  transition: all 0.2s ease;
+}
+
+.key-value-list li:hover {
+  background: linear-gradient(to right, #edf2f7, #e2e8f0);
+  transform: translateX(5px);
+}
+
+.key {
+  color: #2c5282;
+  font-weight: 600;
+  font-size: 1.05em;
+}
+
+.value {
+  color: #4a5568;
+  background: white;
+  padding: 5px 15px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.footer p {
+  color: #4a5568;
+  font-size: 1.1em;
+  font-weight: 500;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2em;
+  }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .time-display {
+    font-size: 1.8em !important;
+    padding: 20px !important;
+  }
+
+  .key-value-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .card h3 {
+    font-size: 1.3em;
+  }
+}
