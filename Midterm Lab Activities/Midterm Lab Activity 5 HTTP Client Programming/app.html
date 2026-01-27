@@ -1,0 +1,47 @@
+<div class="valorant-container">
+  <h1>List from Main - Users</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Website</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of httpusers; track user.id) {
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.website }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <h1>Quotes </h1>
+
+  <table class="quotes-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Quote</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (quote of quotes; track quote.id) {
+        <tr>
+          <td>{{ quote.id }}</td>
+          <td class="quote-text">{{ quote.quote }}</td>
+          <td>{{ quote.author }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

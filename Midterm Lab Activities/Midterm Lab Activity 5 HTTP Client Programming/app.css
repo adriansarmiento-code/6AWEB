@@ -1,0 +1,78 @@
+body {
+  background: linear-gradient(135deg, #0f1923 0%, #1a2632 100%);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: 'Arial Black', sans-serif;
+  color: #ff4654;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 30px;
+  font-size: 2.5em;
+  text-shadow: 0 0 10px rgba(255, 70, 84, 0.5),
+               0 0 20px rgba(255, 70, 84, 0.3);
+}
+
+table {
+  width: 95%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: rgba(15, 25, 35, 0.9);
+  box-shadow: 0 0 30px rgba(255, 70, 84, 0.3);
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+th {
+  background: linear-gradient(135deg, #ff4654 0%, #d63447 100%);
+  color: #0f1923;
+  padding: 18px;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.9em;
+  border-bottom: 3px solid #53212b;
+}
+
+td {
+  padding: 15px 18px;
+  color: #ecf0f1;
+  border-bottom: 1px solid rgba(83, 33, 43, 0.3);
+  font-size: 0.95em;
+}
+
+tr {
+  transition: all 0.3s ease;
+}
+
+tbody tr:hover {
+  background: rgba(255, 70, 84, 0.1);
+  transform: scale(1.01);
+  box-shadow: 0 0 15px rgba(255, 70, 84, 0.2);
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(26, 38, 50, 0.5);
+}
+
+tbody tr:nth-child(odd) {
+  background: rgba(15, 25, 35, 0.5);
+}
+
+/* Accent color for links/emails */
+td:nth-child(4), td:nth-child(5) {
+  color: #ff4654;
+  font-weight: 500;
+}
+
+/* ID column styling */
+td:first-child {
+  color: #ffd666;
+  font-weight: bold;
+  font-size: 1.1em;
+}
