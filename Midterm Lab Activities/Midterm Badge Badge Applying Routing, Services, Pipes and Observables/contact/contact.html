@@ -1,0 +1,96 @@
+<div class="contact-container">
+  <div class="contact-header">
+    <h1>📧 CONTACT US</h1>
+    <p>Have a question or need support? Get in touch with us!</p>
+  </div>
+
+  <div class="contact-content">
+    <div class="contact-form-section">
+      <h2>Send us a message</h2>
+
+      <form #contactFormRef="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            [(ngModel)]="contactForm.name"
+            required
+            class="form-input"
+            placeholder="Your full name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="contactForm.email"
+            required
+            class="form-input"
+            placeholder="your.email@example.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            [(ngModel)]="contactForm.subject"
+            required
+            class="form-input"
+            placeholder="Brief subject"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            [(ngModel)]="contactForm.message"
+            required
+            class="form-textarea"
+            placeholder="Your message here..."
+            rows="5"
+          ></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-submit">Submit</button>
+          <button type="button" class="btn-reset" (click)="resetForm()">Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-preview" *ngIf="submitted">
+      <h2>📋 Form Preview</h2>
+      <div class="preview-content">
+        <div class="preview-item">
+          <strong>Name:</strong>
+          <span>{{ contactForm.name | uppercase }}</span>
+        </div>
+        <div class="preview-item">
+          <strong>Email:</strong>
+          <span>{{ contactForm.email }}</span>
+        </div>
+        <div class="preview-item">
+          <strong>Subject:</strong>
+          <span>{{ contactForm.subject }}</span>
+        </div>
+        <div class="preview-item">
+          <strong>Message:</strong>
+          <p>{{ contactForm.message }}</p>
+        </div>
+        <div class="success-message">
+          ✅ Your message has been received! We'll get back to you soon.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

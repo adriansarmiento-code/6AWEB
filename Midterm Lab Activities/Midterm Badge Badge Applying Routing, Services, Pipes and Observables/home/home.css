@@ -1,0 +1,89 @@
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.welcome-section {
+  text-align: center;
+  padding: 3rem 0;
+  margin-bottom: 2rem;
+}
+
+.welcome-section h1 {
+  color: #ff4654;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(255, 70, 84, 0.5);
+  letter-spacing: 3px;
+}
+
+.welcome-section p {
+  color: #ecf0f1;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.latest-updates h2 {
+  color: #ffd666;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.post-card {
+  background: rgba(15, 25, 35, 0.9);
+  border: 1px solid rgba(255, 70, 84, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(255, 70, 84, 0.3);
+  border-color: #ff4654;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.post-id {
+  color: #ffd666;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.user-id {
+  color: #95a5a6;
+  font-size: 0.85rem;
+}
+
+.post-title {
+  color: #ff4654;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.post-body {
+  color: #ecf0f1;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.loading {
+  text-align: center;
+  color: #ffd666;
+  font-size: 1.2rem;
+  padding: 2rem;
+}

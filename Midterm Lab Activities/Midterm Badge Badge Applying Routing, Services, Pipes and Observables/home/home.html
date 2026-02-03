@@ -1,0 +1,27 @@
+<div class="home-container">
+  <div class="welcome-section">
+    <h1>WELCOME TO HELP DESK PORTAL</h1>
+    <p>Your one-stop solution for community support and services</p>
+  </div>
+
+  <div class="latest-updates">
+    <h2>📢 LATEST UPDATES</h2>
+
+    <ng-container *ngIf="latestPosts$ | async as posts; else loading">
+      <div class="posts-grid">
+        <div class="post-card" *ngFor="let post of posts">
+          <div class="post-header">
+            <span class="post-id">#{{ post.id }}</span>
+            <span class="user-id">User {{ post.userId }}</span>
+          </div>
+          <h3 class="post-title">{{ post.title | uppercase }}</h3>
+          <p class="post-body">{{ post.body | truncate:100 }}</p>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <div class="loading">Loading latest updates...</div>
+    </ng-template>
+  </div>
+</div>
