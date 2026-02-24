@@ -1,0 +1,217 @@
+/* ── Imports ───────────────────────────────────────────── */
+
+/* ── Variables ─────────────────────────────────────────── */
+:host {
+  --bg: #0f1117;
+  --card-bg: #1a1d27;
+  --input-bg: #13151f;
+  --border: #2e3245;
+  --border-focus: #5c6bc0;
+  --primary: #5c6bc0;
+  --primary-light: #7986cb;
+  --accent: #64ffda;
+  --text: #e8eaf6;
+  --muted: #5c6380;
+  --error: #ff6b8a;
+  --radius: 8px;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Page Wrapper ──────────────────────────────────────── */
+.form-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(92, 107, 192, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(100, 255, 218, 0.05) 0%, transparent 50%);
+  padding: 2rem;
+}
+
+/* ── Card ──────────────────────────────────────────────── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 2.5rem 2.25rem;
+  width: 100%;
+  max-width: 420px;
+  animation: slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Header ────────────────────────────────────────────── */
+.form-header {
+  margin-bottom: 2rem;
+  border-left: 3px solid var(--accent);
+  padding-left: 0.85rem;
+}
+
+.form-header h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem;
+  color: var(--text);
+  margin: 0 0 0.2rem;
+  letter-spacing: -0.02em;
+}
+
+.form-header p {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Field Group ───────────────────────────────────────── */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.1rem;
+}
+
+/* ── Field Label ───────────────────────────────────────── */
+.field-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Inputs & Select ───────────────────────────────────── */
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.input::placeholder {
+  color: var(--muted);
+}
+
+.input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.2);
+}
+
+/* Select arrow */
+select.input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%235c6380' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 10px;
+  cursor: pointer;
+}
+
+select.input option {
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+/* ── Textarea ──────────────────────────────────────────── */
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+/* ── Radio Group ───────────────────────────────────────── */
+.radio-group {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.radio-option input[type="radio"] {
+  accent-color: var(--accent);
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+/* ── Validation States ─────────────────────────────────── */
+.input.ng-invalid.ng-touched {
+  border-color: var(--error);
+}
+
+.input.ng-valid.ng-touched {
+  border-color: var(--accent);
+}
+
+/* ── Error Message ─────────────────────────────────────── */
+.error {
+  font-size: 0.75rem;
+  color: var(--error);
+  margin-top: 0.35rem;
+  padding-left: 0.2rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Submit Button ─────────────────────────────────────── */
+.btn {
+  width: 100%;
+  padding: 0.85rem;
+  margin-top: 0.5rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--primary-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(92, 107, 192, 0.4);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  background: #2a2d3e;
+  color: var(--muted);
+  cursor: not-allowed;
+}
