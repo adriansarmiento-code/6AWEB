@@ -1,0 +1,28 @@
+.cdk-overlay-container {
+  z-index: 9999 !important;
+}
+
+.mat-datepicker-content {
+  z-index: 9999 !important;
+}
+
+.cdk-overlay-container {
+  z-index: 9999 !important;
+}
+
+.mat-datepicker-content {
+  z-index: 9999 !important;
+}
+
+/* Fix select dropdown and datepicker overlapping inline */
+.mat-mdc-select-panel {
+  z-index: 9999 !important;
+}
+
+.cdk-overlay-pane {
+  z-index: 9999 !important;
+}
+
+.mat-mdc-card {
+  overflow: visible !important;
+}
