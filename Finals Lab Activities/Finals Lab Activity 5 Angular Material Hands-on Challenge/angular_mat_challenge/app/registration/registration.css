@@ -1,0 +1,396 @@
+
+
+/* ─── CSS Variables ─────────────────────────────── */
+:host {
+  --bg:        #080c14;
+  --surface:   #0d1220;
+  --surface2:  #111827;
+  --border:    rgba(0,224,255,0.15);
+  --accent:    #00e0ff;
+  --accent2:   #ff6b35;
+  --text:      #e2e8f0;
+  --muted:     #64748b;
+  --error:     #ff4d6d;
+  --success:   #00ffa3;
+  --radius:    10px;
+  --font-head: 'Rajdhani', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+}
+
+/* ─── Light Mode Override ───────────────────────── */
+.shell.light {
+  --bg:       #f0f4f8;
+  --surface:  #ffffff;
+  --surface2: #e8edf5;
+  --border:   rgba(0,100,200,0.2);
+  --accent:   #0052cc;
+  --accent2:  #e05c00;
+  --text:     #1a202c;
+  --muted:    #64748b;
+}
+
+/* ─── Shell ─────────────────────────────────────── */
+.shell {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ─── Topbar ─────────────────────────────────────── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 56px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.brand-name {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+.brand-tag {
+  font-size: 0.65rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.1em;
+}
+
+.toggle-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-left: 6px;
+}
+
+/* ─── Form Area ──────────────────────────────────── */
+.form-area {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  min-height: calc(100vh - 56px);
+}
+
+/* ─── Left Panel ──────────────────────────────────── */
+.left-panel {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.left-panel::before {
+  content: '⬡';
+  position: absolute;
+  bottom: -60px;
+  right: -40px;
+  font-size: 18rem;
+  color: var(--accent);
+  opacity: 0.03;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.mission-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--accent2);
+  border: 1px solid var(--accent2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.form-heading {
+  font-family: var(--font-head);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+  letter-spacing: 0.05em;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.form-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 280px;
+}
+
+.form-desc strong {
+  color: var(--accent2);
+}
+
+.requirement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.req-item {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  padding: 6px 12px;
+  border-left: 2px solid var(--border);
+  transition: border-color 0.2s;
+}
+
+.req-item:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+/* ─── Right Panel ─────────────────────────────────── */
+.right-panel {
+  padding: 3rem 2.5rem;
+  background: var(--bg);
+  overflow-y: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 600px;
+}
+
+.field {
+  width: 100%;
+}
+
+.half {
+  flex: 1;
+  min-width: 0;
+}
+
+.field-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* ─── Material Field Overrides ───────────────────── */
+::ng-deep .mat-mdc-form-field .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-form-field .mdc-notched-outline__notch,
+::ng-deep .mat-mdc-form-field .mdc-notched-outline__trailing {
+  border-color: var(--border) !important;
+}
+
+::ng-deep .mat-mdc-form-field:hover .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-form-field:hover .mdc-notched-outline__notch,
+::ng-deep .mat-mdc-form-field:hover .mdc-notched-outline__trailing {
+  border-color: var(--accent) !important;
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+::ng-deep .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: var(--accent) !important;
+  border-width: 2px !important;
+}
+
+::ng-deep .mat-mdc-input-element,
+::ng-deep .mat-mdc-select-value-text {
+  color: var(--text) !important;
+  font-family: var(--font-mono) !important;
+}
+
+::ng-deep .mat-mdc-form-field-label,
+::ng-deep .mat-mdc-floating-label {
+  color: var(--muted) !important;
+  font-family: var(--font-mono) !important;
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-floating-label {
+  color: var(--accent) !important;
+}
+
+::ng-deep .mat-mdc-form-field-icon-suffix .mat-icon,
+::ng-deep .mat-mdc-form-field-icon-suffix button {
+  color: var(--muted) !important;
+}
+
+/* ─── Radio ──────────────────────────────────────── */
+.radio-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.field-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.radio-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.inline-error {
+  font-size: 0.72rem;
+  color: var(--error);
+}
+
+/* ─── Slider ──────────────────────────────────────── */
+.slider-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.slider {
+  width: 100%;
+}
+
+/* ─── Submit Button ───────────────────────────────── */
+.submit-btn {
+  margin-top: 12px;
+  height: 52px;
+  font-family: var(--font-head) !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.15em !important;
+  background: var(--accent) !important;
+  color: #080c14 !important;
+  border-radius: var(--radius) !important;
+  transition: opacity 0.2s, transform 0.1s !important;
+}
+
+.submit-btn:hover:not([disabled]) {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.submit-btn[disabled] {
+  background: var(--surface2) !important;
+  color: var(--muted) !important;
+}
+
+/* ─── Result Panel ────────────────────────────────── */
+.result-panel {
+  margin-top: 28px;
+  border: 1px solid var(--success);
+  border-radius: var(--radius);
+  overflow: hidden;
+  animation: fadeIn 0.4s ease;
+  max-width: 600px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.result-header {
+  background: var(--success);
+  color: #080c14;
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.result-icon {
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.result-grid {
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  background: var(--surface);
+}
+
+.result-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rl {
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rv {
+  font-size: 0.85rem;
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+/* ─── Responsive ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .form-area {
+    grid-template-columns: 1fr;
+  }
+
+  .left-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+  }
+
+  .form-heading {
+    font-size: 2.5rem;
+  }
+
+  .right-panel {
+    padding: 2rem 1.5rem;
+  }
+
+  .field-row {
+    flex-direction: column;
+  }
+
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+}

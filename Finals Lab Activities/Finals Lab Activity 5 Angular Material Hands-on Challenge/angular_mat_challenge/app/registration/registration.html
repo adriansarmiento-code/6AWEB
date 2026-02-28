@@ -1,0 +1,173 @@
+<div class="shell" [class.light]="!darkMode()">
+
+  <!-- Header Bar -->
+  <div class="topbar">
+    <div class="brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-name">NEXUS FLEET</span>
+      <span class="brand-tag">CREW ENROLLMENT</span>
+    </div>
+    <mat-slide-toggle
+      [checked]="darkMode()"
+      (change)="toggleDarkMode()"
+      color="primary"
+      matTooltip="Toggle light/dark mode">
+      <span class="toggle-label">{{ darkMode() ? '🌙 DARK' : '☀️ LIGHT' }}</span>
+    </mat-slide-toggle>
+  </div>
+
+  <!-- Main Form Area -->
+  <div class="form-area">
+
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <div class="mission-badge">MISSION 2077</div>
+      <h1 class="form-heading">
+        JOIN THE<br>
+        <span class="accent">FLEET.</span>
+      </h1>
+      <p class="form-desc">
+        Register as a crew member for the interstellar expedition. Only candidates born
+        <strong>2006 or earlier</strong> are eligible.
+      </p>
+      <div class="requirement-list">
+        <div class="req-item">⬡ Must be born in 2006 or before</div>
+        <div class="req-item">⬡ Password: letters &amp; numbers only</div>
+        <div class="req-item">⬡ Password must start with a letter</div>
+        <div class="req-item">⬡ Minimum 8 characters</div>
+      </div>
+    </div>
+
+    <!-- Right Panel: Form -->
+    <div class="right-panel">
+      <form [formGroup]="formdata" (ngSubmit)="onSubmit()" autocomplete="off">
+
+        <!-- Call Sign -->
+        <mat-form-field appearance="outline" class="field">
+          <mat-label>Call Sign</mat-label>
+          <input matInput formControlName="callSign" placeholder="e.g. GHOST7">
+          <mat-icon matSuffix>badge</mat-icon>
+          @if (formdata.controls['callSign'].invalid && formdata.controls['callSign'].touched) {
+            <mat-error>Call sign is required (min 3 characters).</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="field">
+          <mat-label>Email Address</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="crew@nexusfleet.io">
+          <mat-icon matSuffix>alternate_email</mat-icon>
+          @if (formdata.controls['email'].invalid && formdata.controls['email'].touched) {
+            <mat-error>A valid email is required.</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="outline" class="field">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password">
+          <button mat-icon-button matSuffix type="button" (click)="showPassword = !showPassword">
+            <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          @if (formdata.controls['password'].invalid && formdata.controls['password'].touched) {
+            <mat-error>{{ getPasswordError() }}</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Row: Gender + Birth Date -->
+        <div class="field-row">
+          <div class="radio-block">
+            <label class="field-label">Gender</label>
+            <mat-radio-group formControlName="gender" class="radio-group">
+              <mat-radio-button value="male">Male</mat-radio-button>
+              <mat-radio-button value="female">Female</mat-radio-button>
+              <mat-radio-button value="other">Other</mat-radio-button>
+            </mat-radio-group>
+            @if (formdata.controls['gender'].invalid && formdata.controls['gender'].touched) {
+              <span class="inline-error">Gender is required.</span>
+            }
+          </div>
+
+          <mat-form-field appearance="outline" class="field half">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthDate" [max]="maxDate">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            @if (formdata.controls['birthDate'].touched) {
+              @if (formdata.controls['birthDate'].hasError('required')) {
+                <mat-error>Birth date is required.</mat-error>
+              } @else if (formdata.controls['birthDate'].hasError('tooYoung')) {
+                <mat-error>Must be born in 2006 or earlier.</mat-error>
+              }
+            }
+          </mat-form-field>
+        </div>
+
+        <!-- Row: Nationality + Division -->
+        <div class="field-row">
+          <mat-form-field appearance="outline" class="field half">
+            <mat-label>Nationality</mat-label>
+            <mat-select formControlName="nationality">
+              @for (n of nationalities; track n) {
+                <mat-option [value]="n">{{ n }}</mat-option>
+              }
+            </mat-select>
+            @if (formdata.controls['nationality'].invalid && formdata.controls['nationality'].touched) {
+              <mat-error>Select your nationality.</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="field half">
+            <mat-label>Division</mat-label>
+            <mat-select formControlName="division">
+              @for (d of divisions; track d) {
+                <mat-option [value]="d">{{ d }}</mat-option>
+              }
+            </mat-select>
+            @if (formdata.controls['division'].invalid && formdata.controls['division'].touched) {
+              <mat-error>Select a division.</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <!-- Experience Slider -->
+        <div class="slider-block">
+          <label class="field-label">
+            Experience Level &mdash;
+            <span class="accent">{{ formdata.get('experienceLevel')?.value }} / 10</span>
+          </label>
+          <mat-slider [min]="minSkill" [max]="maxSkill" [step]="1" [discrete]="true" class="slider">
+            <input matSliderThumb formControlName="experienceLevel">
+          </mat-slider>
+        </div>
+
+        <!-- Submit -->
+        <button mat-raised-button type="submit" class="submit-btn">
+          ENLIST NOW &rarr;
+        </button>
+
+      </form>
+
+      <!-- Result -->
+      @if (submitted) {
+        <div class="result-panel">
+          <div class="result-header">
+            <span class="result-icon">✓</span>
+            CREW MEMBER ENROLLED
+          </div>
+          <div class="result-grid">
+            <div class="result-item"><span class="rl">Call Sign</span><span class="rv">{{ callSign }}</span></div>
+            <div class="result-item"><span class="rl">Email</span><span class="rv">{{ email }}</span></div>
+            <div class="result-item"><span class="rl">Password</span><span class="rv">{{ password }}</span></div>
+            <div class="result-item"><span class="rl">Gender</span><span class="rv">{{ gender }}</span></div>
+            <div class="result-item"><span class="rl">Birth Date</span><span class="rv">{{ birthDate | date:'longDate' }}</span></div>
+            <div class="result-item"><span class="rl">Nationality</span><span class="rv">{{ nationality }}</span></div>
+            <div class="result-item"><span class="rl">Division</span><span class="rv">{{ division }}</span></div>
+            <div class="result-item"><span class="rl">Experience</span><span class="rv">{{ experienceLevel }} / 10</span></div>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</div>
